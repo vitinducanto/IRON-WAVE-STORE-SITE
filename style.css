@@ -1,0 +1,242 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    font-family: 'Montserrat', sans-serif;
+
+    background: url("img/fundao.png") no-repeat center center;
+    background-size: cover;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Overlay escuro */
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: -1;
+}
+
+.container {
+    width: 100%;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+
+    /* DESCE O CARD */
+    margin-top: 60px;
+}
+
+
+.card {
+    background: rgba(0, 0, 0, 0.82);
+    border: 1px solid #00ffff88;
+    border-radius: 20px;
+    padding: 32px;
+    max-width: 380px;
+    width: 100%;
+    color: #fff;
+    text-align: center;
+
+    box-shadow:
+        0 0 25px #00ffff55,
+        0 0 60px #00ffff25;
+
+    backdrop-filter: blur(6px);
+}
+
+
+h1 {
+    color: #00ffff;
+    font-size: 2rem;
+    letter-spacing: 2px;
+    margin-bottom: 10px;
+}
+
+.subtitle {
+    color: #ccc;
+    font-size: 0.95rem;
+    margin-bottom: 20px;
+}
+
+ul {
+    list-style: none;
+    text-align: left;
+    margin-bottom: 25px;
+}
+
+li {
+    margin-bottom: 10px;
+    font-size: 0.95rem;
+}
+
+.btn {
+    display: block;
+    background: #00ffff;
+    color: #000;
+    padding: 16px;
+    border-radius: 14px;
+    font-weight: 700;
+    text-decoration: none;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+
+    animation: neonPulse 2s infinite;
+}
+
+/* Brilho externo */
+.btn::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: #00ffff;
+    filter: blur(25px);
+    opacity: 0.6;
+    z-index: -1;
+}
+
+/* Hover */
+.btn:hover {
+    transform: scale(1.08);
+}
+
+/* Animação neon */
+@keyframes neonPulse {
+    0% {
+        box-shadow: 0 0 10px #00ffff,
+                    0 0 20px #00ffff;
+    }
+    50% {
+        box-shadow: 0 0 25px #00ffff,
+                    0 0 50px #00ffff;
+    }
+    100% {
+        box-shadow: 0 0 10px #00ffff,
+                    0 0 20px #00ffff;
+    }
+}
+
+
+.alert {
+    display: block;
+    margin-top: 15px;
+    font-size: 0.85rem;
+    color: #ffcc00;
+}
+
+/* RESPONSIVO */
+@media (max-width: 480px) {
+    h1 {
+        font-size: 1.6rem;
+    }
+
+    .card {
+        padding: 22px;
+    }
+}
+.secure {
+    display: block;
+    margin-top: 14px;
+    font-size: 0.75rem;
+    color: #aaa;
+    text-align: center;
+}
+
+/* ===============================
+   ANIMAÇÃO DE ENTRADA DO SITE
+================================ */
+
+.fade-in {
+    animation: pageFade 1.2s ease-out forwards;
+}
+
+@keyframes pageFade {
+    from {
+        opacity: 0;
+        transform: translateY(25px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Animação do card */
+.card {
+    animation: cardEnter 1.4s ease-out forwards;
+}
+
+@keyframes cardEnter {
+    from {
+        opacity: 0;
+        transform: scale(0.92);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+/* ===============================
+   ANIMAÇÃO EM CAMADAS (ENTRADA)
+================================ */
+
+/* Estado inicial (invisível) */
+.card h1,
+.card .subtitle,
+.card ul,
+.card .btn,
+.card .alert {
+    opacity: 0;
+    transform: translateY(25px);
+}
+
+/* Título */
+.card h1 {
+    animation: layerIn 0.8s ease-out forwards;
+    animation-delay: 0.2s;
+}
+
+/* Subtítulo */
+.card .subtitle {
+    animation: layerIn 0.8s ease-out forwards;
+    animation-delay: 0.4s;
+}
+
+/* Lista */
+.card ul {
+    animation: layerIn 0.8s ease-out forwards;
+    animation-delay: 0.6s;
+}
+
+/* Botão WhatsApp */
+.card .btn {
+    animation: layerIn 0.8s ease-out forwards;
+    animation-delay: 0.9s;
+}
+
+/* Aviso */
+.card .alert {
+    animation: layerIn 0.8s ease-out forwards;
+    animation-delay: 1.1s;
+}
+
+/* Keyframe base */
+@keyframes layerIn {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
